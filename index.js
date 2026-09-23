@@ -13,6 +13,10 @@ const cors = require(`cors`)
 /** open CORS policy */
 app.use(cors())
 
+/** load swagger */
+const swaggerUi = require('swagger-ui-express')
+const swaggerSpec = require('./swagger')
+
 /** define all routes */
 const userRoute = require(`./routes/user.route`)
 const discountRoute = require('./routes/discount.route')
@@ -28,6 +32,9 @@ app.use('/event', eventRoute)
 app.use('/ticket', ticketRoute)
 app.use('/seat', seatRoute)
 app.use('/auth', auth)
+
+/** route for swagger documentation page */
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 /** route to access uploaded file */
 app.use(express.static(__dirname))

@@ -4,6 +4,24 @@ const discountModel = require("../models").discount
 /** load Operation from Sequelize */
 const Op = require("sequelize").Op
 
+/** create function for get all discount */
+exports.getAllDiscount = async (request, response) => {
+    try {
+        const discounts = await discountModel.findAll()
+
+        return response.json({
+            success: true,
+            data: discounts,
+            message: "All discounts have been loaded"
+        })
+    } catch (error) {
+        return response.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
 /** create function for filter */
 exports.findDiscount = async (request, response) => {
     /** define keyword to find data */
@@ -48,7 +66,7 @@ exports.addDiscount = (request, response) => {
         })
         .catch(error => {
             /** if insert's process fail */
-            return response.json({
+            return response.status(400).json({
                 success: false,
                 message: error.message
             })
@@ -80,7 +98,7 @@ exports.updateDiscount = (request, response) => {
         })
         .catch(error => {
             /** if update's process fail */
-            return response.json({
+            return response.status(400).json({
                 success: false,
                 message: error.message
             })
@@ -105,27 +123,10 @@ exports.deleteDiscount = (request, response) => {
         })
         .catch(error => {
             /** if delete's process fail */
-            return response.json({
+            return response.status(400).json({
                 success: false,
                 message: error.message
             })
         })
 }
 
-/** create function for get all discount */
-exports.getAllDiscount = async (request, response) => {
-    try {
-        const discounts = await discountModel.findAll()
-
-        return response.json({
-            success: true,
-            data: discounts,
-            message: "All discounts have been loaded"
-        })
-    } catch (error) {
-        return response.json({
-            success: false,
-            message: error.message
-        })
-    }
-}

@@ -38,7 +38,7 @@ const authenticate = async (request, response) => {
         })
     }
     /**if data user does not exist, my teacher purposely dont put else? cause in if/else logic if theres if there must be else. but this code doesnt even have else, so if i were to troubleshoot and solve this with chatgpt, i already suspected this as an error, if its not an error, ignore this message. or does every if/else logic if we just do IF, and we dont write else, would the system already knows its else without us saying if and else? */
-    return response.json({
+    return response.status(400).json({
         success: false,
         logged: false,
         message: 'Authentication Failed: Invalid username or password.'

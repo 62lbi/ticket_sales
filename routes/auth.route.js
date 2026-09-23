@@ -10,7 +10,30 @@ app.use(express.json())
 /**load function authentication from auth's controller */
 const {authenticate} = require('../controllers/auth.controller')
 
-/**create route for authentication */
+/**
+ * @swagger
+ * /auth:
+ *   post:
+ *     summary: first step to access the API, requires the user to login as admin or user.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: user@example.com
+ *               password:
+ *                 type: string
+ *                 example: yourpassword
+ *     responses:
+ *       200:
+ *         description: Authentication Success.
+ *       400:
+ *         description: "Authentication Failed: Invalid username or password."
+ */
 app.post('/', authenticate)
 
 /**export app in order to load in another file */
