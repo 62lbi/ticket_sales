@@ -41,5 +41,5 @@ app.use(express.static(__dirname))
 
 /** run server based on defined port */
 app.listen(PORT, () => {
-    console.log(`swagger url: http://localhost:8000/api-docs/#/ and the postman port runs on ${PORT}`)
+    console.log(`----------------> swagger url: http://localhost:8000/api-docs/#/ and the postman port runs on ${PORT}`)
 })

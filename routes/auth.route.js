@@ -15,6 +15,7 @@ const {authenticate} = require('../controllers/auth.controller')
  * /auth:
  *   post:
  *     summary: first step to access the API, requires the user to login as admin or user.
+ *     tags: [authentication]
  *     requestBody:
  *       required: true
  *       content:

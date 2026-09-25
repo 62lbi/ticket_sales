@@ -18,6 +18,7 @@ const { isUser, isAdmin, isBoth } = require('../middlewares/role-validation')
  * /event:
  *   get:
  *     summary: get all of the existing event in the database - User & Admin Access
+ *     tags: [event]
  *     security:
  *       - bearerAuth: []
  *     responses:
@@ -33,6 +34,7 @@ app.get("/", authorize, isBoth, eventController.getAllEvent)
  * /event/{key}:
  *   get:
  *     summary: get a specified event data based on keyword - User & Admin Access
+ *     tags: [event]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -54,6 +56,7 @@ app.get("/:key", authorize, isBoth, eventController.findEvent)
  * /event:
  *   post:
  *     summary: add a new event data - Admin Access
+ *     tags: [event]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -92,6 +95,7 @@ app.post("/", authorize, isAdmin, eventController.addEvent)
  * /event/{id}:
  *   put:
  *     summary: Update existing event data with its ID - Admin Access
+ *     tags: [event]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -137,6 +141,7 @@ app.put("/:id", authorize, isAdmin, eventController.updateEvent)
  * /event/{id}:
  *   delete:
  *     summary: delete a specific event data with its ID - Admin Access
+ *     tags: [event]
  *     security:
  *       - bearerAuth: []
  *     parameters:

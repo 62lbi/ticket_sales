@@ -12,6 +12,7 @@ app.use(express.json());
  * /ticket:
  *   post:
  *     summary: create new ticket(s), creating a new seat for each requested seat and booking it - Admin Access
+ *     tags: [ticket]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -51,6 +52,7 @@ app.post('/', authorize, isAdmin, ticketController.addTicket);
  * /ticket:
  *   get:
  *     summary: get all tickets, including associated event, user, and seat data - Admin Access
+ *     tags: [ticket]
  *     security:
  *       - bearerAuth: []
  *     responses:
@@ -66,6 +68,7 @@ app.get('/', authorize, isAdmin, ticketController.getAllTicket);
  * /ticket/user/{userID}:
  *   get:
  *     summary: get all tickets belonging to a specific user - Admin Access
+ *     tags: [ticket]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -88,6 +91,7 @@ app.get('/user/:userID', authorize, isAdmin, ticketController.getUserTickets);
  * /ticket/sales-per-event:
  *   get:
  *     summary: get the total number of tickets sold, grouped per event - User & Admin Access
+ *     tags: [ticket]
  *     security:
  *       - bearerAuth: []
  *     responses:
@@ -103,6 +107,7 @@ app.get('/sales-per-event', authorize, isUser, ticketController.getTicketSalesPe
  * /ticket/top-active-events:
  *   get:
  *     summary: get the top 5 upcoming/active events ranked by ticket sales - User & Admin Access
+ *     tags: [ticket]
  *     security:
  *       - bearerAuth: []
  *     responses:
@@ -118,6 +123,7 @@ app.get('/top-active-events', authorize, isUser, ticketController.getTop5Upcomin
  * /ticket/{id}:
  *   get:
  *     summary: get a specific ticket by its ID, including associated event, user, and seat data - Admin Access
+ *     tags: [ticket]
  *     security:
  *       - bearerAuth: []
  *     parameters:

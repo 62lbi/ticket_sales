@@ -18,7 +18,8 @@ const {isUser, isAdmin, isBoth} = require('../middlewares/role-validation')
  * /discount:
  *   get:
  *     summary: get all of the existing discounts in the database - User & Admin Access
-*     security:
+ *     tags: [discount]
+ *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
@@ -33,6 +34,7 @@ app.get("/", authorize, isBoth, discountController.getAllDiscount)
  * /discount/{key}:
  *   get:
  *     summary: get a specified discount data based on keyword - User & Admin Access
+ *     tags: [discount]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -54,6 +56,7 @@ app.get("/:key", authorize, isBoth, discountController.findDiscount)
  * /discount:
  *   post:
  *     summary: add a new discount data - Admin Access
+ *     tags: [discount]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -88,6 +91,7 @@ app.post("/", authorize, isAdmin, discountController.addDiscount)
  * /discount/{id}:
  *   put:
  *     summary: Update existing discount data with its ID - Admin Access
+ *     tags: [discount]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -129,6 +133,7 @@ app.put("/:id", authorize, isAdmin, discountController.updateDiscount)
  * /discount/{id}:
  *   delete:
  *     summary: delete a specific discount data with its ID - Admin Access
+ *     tags: [discount]
  *     security:
  *       - bearerAuth: []
  *     parameters:

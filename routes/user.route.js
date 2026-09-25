@@ -20,6 +20,7 @@ const {validateUser} = require('../middlewares/user-validation')
  * /user:
  *   get:
  *     summary: get all users - Admin Access
+ *     tags: [user]
  *     security:
  *       - bearerAuth: []
  *     responses:
@@ -35,6 +36,7 @@ app.get("/", authorize, isAdmin, userController.getAllUser)
  * /user/{key}:
  *   get:
  *     summary: get a specified user based on keyword - User & Admin Access
+ *     tags: [user]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -56,6 +58,7 @@ app.get("/:key", authorize, isBoth,  userController.findUser)
  * /user:
  *   post:
  *     summary: add a new user - Admin Access
+ *     tags: [user]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -79,6 +82,7 @@ app.post("/", authorize, isAdmin, validateUser, userController.addUser)
  * /user/{id}:
  *   put:
  *     summary: Update existing user data with its ID - Admin Access
+ *     tags: [user]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -109,6 +113,7 @@ app.put("/:id", authorize, isAdmin, userController.updateUser)
  * /user/{id}/reset:
  *   put:
  *     summary: reset a user's password - Admin Access
+ *     tags: [user]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -139,6 +144,7 @@ app.put("/:id/reset", authorize, isAdmin,  userController.resetUserPassword)
  * /user/{id}:
  *   delete:
  *     summary: delete a specific user with its ID - Admin Access
+ *     tags: [user]
  *     security:
  *       - bearerAuth: []
  *     parameters:

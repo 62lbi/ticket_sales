@@ -18,6 +18,7 @@ const {isUser, isAdmin, isBoth} = require('../middlewares/role-validation') //*a
  * /seat:
  *   get:
  *     summary: get all of the existing seats in the database, including associated event data - Admin Access
+ *     tags: [seat]
  *     security:
  *       - bearerAuth: []
  *     responses:
@@ -34,6 +35,7 @@ app.get('/', authorize, isAdmin,  seatController.getAllSeat)
  * /seat/{key}:
  *   get:
  *     summary: search seats by row number, seat ID, event ID, seat number, or status - Admin Access
+ *     tags: [seat]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -57,6 +59,7 @@ app.get('/:key', authorize, isAdmin, seatController.findSeat)
  * /seat:
  *   post:
  *     summary: add a new seat data - Admin Access
+ *     tags: [seat]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -92,6 +95,7 @@ app.post('/', authorize, isAdmin, seatController.addSeat)
  * /seat/{id}:
  *   put:
  *     summary: Update existing seat data with its ID - Admin Access
+ *     tags: [seat]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -136,6 +140,7 @@ app.put('/:id', authorize, isAdmin, seatController.updateSeat)
  * /seat/{id}:
  *   delete:
  *     summary: delete a specific seat data with its ID - Admin Access
+ *     tags: [seat]
  *     security:
  *       - bearerAuth: []
  *     parameters:
